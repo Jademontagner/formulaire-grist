@@ -1,1 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Mon enquête</title>
+
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .question {
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 100px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <h1>Votre expérience</h1>
+
+
+  <div class="question">
+
+    <label>
+      Comment avez-vous connu notre structure ?
+    </label>
+
+    <select id="canal">
+
+      <option value="">
+        -- Choisissez une réponse --
+      </option>
+
+      <option value="Téléphone">
+        Téléphone
+      </option>
+
+      <option value="Email">
+        Email
+      </option>
+
+      <option value="Site internet">
+        Site internet
+      </option>
+
+      <option value="Autre">
+        Autre
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <!-- QUESTIONS TELEPHONE -->
+
+  <div id="telephone" class="hidden">
+
+    <div class="question">
+
+      <label>
+        Qui vous a contacté ?
+      </label>
+
+      <input
+        type="text"
+        id="interlocuteur"
+      >
+
+    </div>
+
+
+    <div class="question">
+
+      <label>
+        Quand avez-vous été contacté ?
+      </label>
+
+      <input
+        type="date"
+        id="date-appel"
+      >
+
+    </div>
+
+
+    <div class="question">
+
+      <label>
+        Quel était le motif de l'appel ?
+      </label>
+
+      <textarea
+        id="motif-appel"
+      ></textarea>
+
+    </div>
+
+  </div>
+
+
+  <!-- QUESTIONS EMAIL -->
+
+  <div id="email" class="hidden">
+
+    <div class="question">
+
+      <label>
+        Quelle est votre adresse email ?
+      </label>
+
+      <input
+        type="email"
+        id="adresse-email"
+      >
+
+    </div>
+
+
+    <div class="question">
+
+      <label>
+        Quel était l'objet du mail ?
+      </label>
+
+      <input
+        type="text"
+        id="objet-email"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- QUESTION AUTRE -->
+
+  <div id="autre" class="hidden">
+
+    <div class="question">
+
+      <label>
+        Pouvez-vous préciser ?
+      </label>
+
+      <textarea
+        id="autre-texte"
+      ></textarea>
+
+    </div>
+
+  </div>
+
+
+  <button id="envoyer">
+    Envoyer
+  </button>
+
+
+<script>
+
+  document
+    .getElementById("canal")
+    .addEventListener("change", function() {
+
+
+      const canal = this.value;
+
+
+      // On cache tout
+
+      document
+        .getElementById("telephone")
+        .classList.add("hidden");
+
+      document
+        .getElementById("email")
+        .classList.add("hidden");
+
+      document
+        .getElementById("autre")
+        .classList.add("hidden");
+
+
+      // On affiche les bonnes questions
+
+      if (canal === "Téléphone") {
+
+        document
+          .getElementById("telephone")
+          .classList.remove("hidden");
+
+      }
+
+
+      if (canal === "Email") {
+
+        document
+          .getElementById("email")
+          .classList.remove("hidden");
+
+      }
+
+
+      if (canal === "Autre") {
+
+        document
+          .getElementById("autre")
+          .classList.remove("hidden");
+
+      }
+
+    });
+
+
+</script>
+
+
+</body>
+
+</html>
